@@ -13,7 +13,7 @@ function upd(){
   if(!ks.length){sm.innerHTML='Tap a product to add';bp.textContent='Proceed to Order';return;}
   var tot=ks.reduce(function(acc,k){return acc+cart[k].p*cart[k].q;},0);
   var cnt=ks.reduce(function(acc,k){return acc+cart[k].q;},0);
-  sm.innerHTML='<b>'+cnt+' item'+(cnt>1?'s':'')+'</b> — &#8377;'+tot.toFixed(2);
+  sm.innerHTML='<b>'+cnt+' item'+(cnt>1?'s':'')+'</b> — ₹'+tot.toFixed(2);
   bp.textContent='Proceed to Order ('+cnt+')';
 }
 function proceed(){
@@ -29,8 +29,8 @@ function send(){
   if(!nm||!ph||!ad){alert('Please fill Name, Mobile Number and Address.');return;}
   var ks=Object.keys(cart);var tot=0;
   var lines=['*New Order from '+nm+'*','Phone: '+ph,'Address: '+ad,''];
-  ks.forEach(function(k){lines.push('• '+cart[k].n+' x'+cart[k].q+' — &#8377;'+(cart[k].p*cart[k].q).toFixed(2));tot+=cart[k].p*cart[k].q;});
-  lines.push('','*Total: &#8377;'+tot.toFixed(2)+'*');
+  ks.forEach(function(k){lines.push('• '+cart[k].n+' x'+cart[k].q+' — ₹'+(cart[k].p*cart[k].q).toFixed(2));tot+=cart[k].p*cart[k].q;});
+  lines.push('','*Total: ₹'+tot.toFixed(2)+'*');
   var msg=gr+'\n\n'+lines.join('\n');
   window.open('https://wa.me/'+wa+'?text='+encodeURIComponent(msg),'_blank');
 }</script></body></html>
